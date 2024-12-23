@@ -2,6 +2,13 @@
 #
 .DS_Store
 
+# Ignore APKs and large build artifacts
+app/build/outputs/
+app/build/intermediates/
+*.apk
+*.so
+
+
 # Xcode
 #
 build/
@@ -33,6 +40,13 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
+app/build/intermediates
+app/build/outputs
+
+# Ignore android and ios folders
+android/
+ios/
+
 
 # node.js
 #
