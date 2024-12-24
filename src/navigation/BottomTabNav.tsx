@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -5,16 +6,16 @@ import Icon from '@react-native-vector-icons/material-design-icons';
 import DIcon from '@react-native-vector-icons/material-icons';
 
 //screens
-import Drivers from '../screens/Drivers';
-import Constructors from '../screens/Constructors';
 import Schedule from '../screens/Schedule';
 import Feed from '../screens/Feed';
+import DriverStack from './DriverStack';
+import ConstructorStack from './ConstructorStack';
 // Define the types for the Bottom Tab Navigator
 type BottomTabParamList = {
-  Drivers: undefined;
-  Constructors: undefined;
   Schedule: undefined;
   Feed: undefined;
+  DriverStack: undefined;
+  ConstructorStack:undefined;
 };
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
@@ -23,24 +24,24 @@ const BottomTabNav = () => {
   return (
     <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen
-        name="Drivers"
-        component={Drivers}
+        name="DriverStack"
+        component={DriverStack}
         options={{
-          tabBarLabel: 'Drivers',
+          tabBarLabel: 'DriverStack', // Custom label for the tab
           tabBarIcon: ({focused}) => (
             <Icon
               name="racing-helmet"
               size={30}
-              color={focused ? '#000000' : '#f0f0f0'}
+              color={focused ? '#000000' : '#f0f0f0'} // Icon color changes based on focus
             />
           ),
         }}
       />
       <Tab.Screen
-        name="Constructors"
-        component={Constructors}
+        name="ConstructorStack"
+        component={ConstructorStack}
         options={{
-          tabBarLabel: 'Constructors',
+          tabBarLabel: 'ConstructorStack',
           tabBarIcon: ({focused}) => (
             <DIcon
               name="engineering"

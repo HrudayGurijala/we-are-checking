@@ -1,16 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, FlatList, StyleSheet, Pressable} from 'react-native';
 import LottieView from 'lottie-react-native';
 import TeamItem from '../components/TeamItem';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import { ConstructorStackParamList } from '../navigation/ConstructorStack';
 
+type ConsProps = NativeStackScreenProps<ConstructorStackParamList, 'Constructors'>;
 
-const Constructors: React.FC = () => {
+const Constructors = ({navigation}:ConsProps) => {
   const [standings, setStandings] = useState<ConstructorStanding[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -39,7 +37,7 @@ const Constructors: React.FC = () => {
       <View style={styles.loaderContainer}>
         <LottieView
           source={require('../assets/Animation - 1735015379125.json')}
-          style={{width: '100%', height: '100%',backgroundColor:'#000000'}}
+          style={{width: '100%', height: '100%', backgroundColor: '#000000'}}
           autoPlay
           loop
         />
@@ -53,7 +51,14 @@ const Constructors: React.FC = () => {
       <FlatList
         data={standings}
         keyExtractor={item => item.position}
-        renderItem={({item}) => <TeamItem team={item}/>}
+        renderItem={({item}) => (
+          <Pressable
+            onPress={() => {
+              navigation.navigate('DetailsConstructor', { team: item });
+            }}>
+            <TeamItem team={item} />
+          </Pressable>
+    )}
       />
     </View>
   );

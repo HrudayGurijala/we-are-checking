@@ -1,59 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import React from 'react';
+import { WebView } from 'react-native-webview';
 
-const TwitterFeed: React.FC = () => {
-  const [tweets, setTweets] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchTweets = async () => {
-      const url = `https://api.twitter.com/2/users/{F1}/tweets`;
-      const bearerToken = 'YOUR_BEARER_TOKEN';
-
-      try {
-        const response = await fetch(url, {
-          headers: {
-            Authorization: `Bearer ${bearerToken}`,
-          },
-        });
-        const data = await response.json();
-        setTweets(data.data || []); // Assuming `data` contains the tweets array
-      } catch (error) {
-        console.error('Error fetching tweets:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTweets();
-  }, []);
-
-  if (loading) {
-    return <Text>Loading...</Text>;
-  }
-
+const Feed: React.FC = () => {
   return (
-    <FlatList
-      data={tweets}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => (
-        <View style={styles.tweet}>
-          <Text style={styles.text}>{item.text}</Text>
-        </View>
-      )}
-    />
+      <WebView
+        source={{
+          html: `
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              </head>
+              <body>
+                <a 
+                  class="twitter-timeline"
+                  href="https://twitter.com/F1">
+                  Tweets by F1
+                </a>
+                <script 
+                  async 
+                  src="https://platform.twitter.com/widgets.js" 
+                  charset="utf-8">
+                </script>
+              </body>
+            </html>
+          `,
+        }}
+        javaScriptEnabled={true}
+        domStorageEnabled={true}
+        style={{ flex: 1 }}
+      />
   );
 };
 
-const styles = StyleSheet.create({
-  tweet: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderColor: '#ddd',
-  },
-  text: {
-    fontSize: 16,
-  },
-});
 
-export default TwitterFeed;
+export default Feed;

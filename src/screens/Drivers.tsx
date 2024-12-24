@@ -1,15 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, FlatList, StyleSheet, Pressable} from 'react-native';
 import DriverItem from '../components/DriverItem';
 import LottieView from 'lottie-react-native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {DriverStackParamList} from '../navigation/DriverStack';
 
-const Drivers: React.FC = () => {
+type DriverProps = NativeStackScreenProps<DriverStackParamList, 'Drivers'>;
+
+const Drivers = ({navigation}: DriverProps) => {
   const [standings, setStandings] = useState<DriverStanding[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -38,21 +37,28 @@ const Drivers: React.FC = () => {
       <View style={styles.loaderContainer}>
         <LottieView
           source={require('../assets/Animation - 1735015379125.json')}
-          style={{width: '100%', height: '100%',backgroundColor:'#000000'}}
+          style={{width: '100%', height: '100%', backgroundColor: '#000000'}}
           autoPlay
           loop
         />
       </View>
     );
   }
-
+  //<DriverItem driver={item} />
   return (
     <View style={styles.container}>
       <Text style={styles.header}>F1 Drivers' Standings</Text>
       <FlatList
         data={standings}
         keyExtractor={item => item.Driver.driverId}
-        renderItem={({item}) => <DriverItem driver={item} />}
+        renderItem={({item}) => (
+              <Pressable
+                onPress={() => {
+                  navigation.navigate('DetailsDriver', { driver: item });
+                }}>
+                <DriverItem driver={item} />
+              </Pressable>
+        )}
       />
     </View>
   );
