@@ -19,11 +19,13 @@ const ConstructorStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="Constructors"
+      screenOptions={{headerShown:false}}
       >
       <Stack.Screen name="Constructors" component={Constructors} />
       <Stack.Screen
         name="DetailsConstructor"
-        component={DetailsConstructor}/>
+        component={DetailsConstructor}
+        options={{headerShown:true}}/>
     </Stack.Navigator>
   );
 };

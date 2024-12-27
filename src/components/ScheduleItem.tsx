@@ -1,34 +1,29 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {PropsWithChildren} from 'react';
-import Seperator from './Seperator';
+import React, { PropsWithChildren } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 type ScheduleProps = PropsWithChildren<{
   gp: Schedule;
 }>;
 
-const ScheduleItem = ({gp}: ScheduleProps) => {
+const ScheduleItem = ({ gp }: ScheduleProps) => {
   return (
-    <View style={styles.ScheduleItemContainer}>
-      <Text>ScheduleItem</Text>
-      <View>
-        <View>
-          <Text>Round</Text>
-        </View>
-        <View>
-          <Text>{gp.round}</Text>
-        </View>
+    <View style={styles.scheduleItemContainer}>
+      {/* Round */}
+      <View style={styles.roundContainer}>
+        <Text style={styles.label}>Round</Text>
+        <Text style={styles.value}>{gp.round}</Text>
       </View>
-      <View>
-        <View>
-          <Text>{gp.raceName}</Text>
-        </View>
+
+      {/* Race Name */}
+      <View style={styles.raceNameContainer}>
+        <Text style={styles.raceName}>{gp.raceName}</Text>
       </View>
-      <View>
-        <View>
-          <Text>{gp.Circuit.Location.locality}</Text>
-        </View>
+
+      {/* Location */}
+      <View style={styles.locationContainer}>
+        <Text style={styles.location}>{gp.Circuit.Location.locality}</Text>
       </View>
-      <Seperator/>
+
     </View>
   );
 };
@@ -36,8 +31,43 @@ const ScheduleItem = ({gp}: ScheduleProps) => {
 export default ScheduleItem;
 
 const styles = StyleSheet.create({
-  ScheduleItemContainer: {
-    display: 'flex',
-    justifyContent: 'center',
+  scheduleItemContainer: {
+    borderBottomColor: '#666666',
+    borderBottomWidth:2,
+    borderRightColor:'#666666',
+    borderRightWidth:2,
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 12,
+  },
+  roundContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  label: {
+    fontSize: 14,
+    color: '#CCCCCC',
+    fontWeight: 'bold',
+  },
+  value: {
+    fontSize: 23,
+    color: '#FFFFFF',
+    fontWeight:700,
+  },
+  raceNameContainer: {
+    marginBottom: 8,
+  },
+  raceName: {
+    fontSize: 27,
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+  },
+  locationContainer: {
+    marginBottom: 8,
+  },
+  location: {
+    fontSize: 14,
+    color: '#AAAAAA',
   },
 });

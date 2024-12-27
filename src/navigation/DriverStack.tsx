@@ -19,12 +19,15 @@ const DriverStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="Drivers"
+      screenOptions={{headerShown:false}}
       >
       <Stack.Screen name="Drivers" component={Drivers} />
       <Stack.Screen
         name="DetailsDriver"
         component={DetailsDriver}
-
+        options={{
+          headerShown:true,
+        }}
       />
     </Stack.Navigator>
   );

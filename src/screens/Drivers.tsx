@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {View, Text, FlatList, StyleSheet, Pressable} from 'react-native';
+import {View, Text, FlatList, StyleSheet, Pressable, StatusBar, SafeAreaView} from 'react-native';
 import DriverItem from '../components/DriverItem';
 import LottieView from 'lottie-react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -34,7 +34,7 @@ const Drivers = ({navigation}: DriverProps) => {
 
   if (loading) {
     return (
-      <View style={styles.loaderContainer}>
+      <View >
         <LottieView
           source={require('../assets/Animation - 1735015379125.json')}
           style={{width: '100%', height: '100%', backgroundColor: '#000000'}}
@@ -46,58 +46,56 @@ const Drivers = ({navigation}: DriverProps) => {
   }
   //<DriverItem driver={item} />
   return (
+    <SafeAreaView style={styles.safeArea}>
+    <StatusBar barStyle="light-content" />
     <View style={styles.container}>
-      <Text style={styles.header}>F1 Drivers' Standings</Text>
+      <Text style={styles.header}>Drivers' Standings</Text>
       <FlatList
         data={standings}
         keyExtractor={item => item.Driver.driverId}
         renderItem={({item}) => (
-              <Pressable
-                onPress={() => {
-                  navigation.navigate('DetailsDriver', { driver: item });
-                }}>
-                <DriverItem driver={item} />
-              </Pressable>
+          <Pressable
+            onPress={() => {
+              navigation.navigate('DetailsDriver', { driver: item });
+            }}
+            style={({pressed}) => [
+              styles.pressable,
+              pressed && styles.pressedItem
+            ]}
+          >
+            <DriverItem driver={item} />
+          </Pressable>
         )}
+        showsVerticalScrollIndicator={false}
       />
     </View>
-  );
+  </SafeAreaView>
+);
 };
+export default Drivers;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  item: {
-    padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-  },
-  name: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  points: {
-    fontSize: 16,
-    color: '#555',
-  },
-  team: {
-    fontSize: 16,
-    color: '#888',
-  },
-  loaderContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+safeArea: {
+  flex: 1,
+  backgroundColor: '#000000',
+},
+container: {
+  flex: 1,
+  padding: 16,
+  paddingBottom:0,
+  backgroundColor: '#000000',
+},
+header: {
+  fontSize: 20,
+  fontWeight: 'bold',
+  marginBottom: 20,
+  textAlign: 'center',
+  color: '#FFFFFF',
+},
+pressable: {
+  marginBottom: 8,
+},
+pressedItem: {
+  opacity: 0.7,
+},
 });
-
-export default Drivers;

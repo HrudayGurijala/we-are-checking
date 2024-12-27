@@ -1,39 +1,42 @@
-/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
+import {StyleSheet} from 'react-native';
 import Icon from '@react-native-vector-icons/material-design-icons';
 import DIcon from '@react-native-vector-icons/material-icons';
 
-//screens
+// Screens
 import Schedule from '../screens/Schedule';
 import Feed from '../screens/Feed';
 import DriverStack from './DriverStack';
 import ConstructorStack from './ConstructorStack';
-// Define the types for the Bottom Tab Navigator
+
 type BottomTabParamList = {
   Schedule: undefined;
   Feed: undefined;
   DriverStack: undefined;
-  ConstructorStack:undefined;
+  ConstructorStack: undefined;
 };
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
+// const {width} = Dimensions.get('window');
 
 const BottomTabNav = () => {
   return (
-    <Tab.Navigator screenOptions={{headerShown: false}}>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarStyle: styles.tabBar,
+        tabBarActiveTintColor: '#FFffff',
+        tabBarInactiveTintColor: '#666666',
+        headerShown: false,
+        
+      }}>
       <Tab.Screen
         name="DriverStack"
         component={DriverStack}
         options={{
-          tabBarLabel: 'DriverStack', // Custom label for the tab
-          tabBarIcon: ({focused}) => (
-            <Icon
-              name="racing-helmet"
-              size={30}
-              color={focused ? '#000000' : '#f0f0f0'} // Icon color changes based on focus
-            />
+          tabBarIcon: ({color}) => (
+            <Icon name="racing-helmet" size={30} color={color} />
           ),
         }}
       />
@@ -41,13 +44,8 @@ const BottomTabNav = () => {
         name="ConstructorStack"
         component={ConstructorStack}
         options={{
-          tabBarLabel: 'ConstructorStack',
-          tabBarIcon: ({focused}) => (
-            <DIcon
-              name="engineering"
-              size={30}
-              color={focused ? '#000000' : '#f0f0f0'}
-            />
+          tabBarIcon: ({color}) => (
+            <Icon name="car-sports" size={30} color={color} />
           ),
         }}
       />
@@ -55,12 +53,10 @@ const BottomTabNav = () => {
         name="Schedule"
         component={Schedule}
         options={{
-          tabBarLabel: 'Schedule',
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({color}) => (
             <DIcon
               name="calendar-month"
-              size={30}
-              color={focused ? '#000000' : '#f0f0f0'}
+              size={30} color={color}
             />
           ),
         }}
@@ -69,12 +65,11 @@ const BottomTabNav = () => {
         name="Feed"
         component={Feed}
         options={{
-          tabBarLabel: 'Feed',
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({color}) => (
             <DIcon
               name="newspaper"
               size={30}
-              color={focused ? '#000000' : '#f0f0f0'}
+              color={color}
             />
           ),
         }}
@@ -82,5 +77,25 @@ const BottomTabNav = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  tabBar: {
+    position: 'absolute',
+    bottom: 16,
+    marginHorizontal:55,
+    width: 'auto',
+    borderRadius: 25,
+    height: 65,
+    paddingTop: 15,
+    backgroundColor: '#1a1a1a',
+    borderTopWidth: 0,
+  },
+  IconStyle:{
+    borderBottomColor:'#ffffff',
+    borderBottomWidth : 2,
+
+  }
+
+});
 
 export default BottomTabNav;
