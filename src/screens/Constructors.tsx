@@ -47,10 +47,10 @@ const Constructors = ({ navigation }: ConsProps) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>F1 Team Standings</Text>
+      <Text style={styles.header}>Constructor Standings</Text>
       <FlatList
         data={standings}
-        keyExtractor={item => item.position}
+        keyExtractor={item => item.Constructor.constructorId}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => {
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: '#000000',
+    paddingBottom:65,
   },
   header: {
     fontSize: 20,
@@ -87,8 +88,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
   loader: {
-    width: '100%',
-    height: '100%',
+    width: '75%',
+    height: '75%',
   },
   pressable: {
     marginBottom: 12,

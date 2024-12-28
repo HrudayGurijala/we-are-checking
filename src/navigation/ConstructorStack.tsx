@@ -25,7 +25,13 @@ const ConstructorStack = () => {
       <Stack.Screen
         name="DetailsConstructor"
         component={DetailsConstructor}
-        options={{headerShown:true}}/>
+        options={{headerShown:true,
+          headerTitle: '',
+          headerStyle: {
+            backgroundColor: '#000',
+          },
+          headerTintColor: '#fff', 
+        }}/>
     </Stack.Navigator>
   );
 };

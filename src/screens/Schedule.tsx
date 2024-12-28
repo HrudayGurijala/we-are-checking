@@ -40,7 +40,7 @@ const Schedule: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>F1 Race Schedule</Text>
+      <Text style={styles.header}>Race Schedule</Text>
       <FlatList
         data={grandPrix}
         keyExtractor={item => item.Circuit.circuitId}
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: '#000000',
+    paddingBottom:65,
   },
   header: {
     fontSize: 20,
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
   loader: {
-    width: '100%',
-    height: '100%',
+    width: '75%',
+    height: '75%',
   },
 });

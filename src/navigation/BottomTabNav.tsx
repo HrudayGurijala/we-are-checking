@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {StyleSheet} from 'react-native';
+import {} from 'react-native';
 import Icon from '@react-native-vector-icons/material-design-icons';
 import DIcon from '@react-native-vector-icons/material-icons';
 
@@ -21,16 +21,30 @@ const Tab = createBottomTabNavigator<BottomTabParamList>();
 // const {width} = Dimensions.get('window');
 
 const BottomTabNav = () => {
+
   return (
     <Tab.Navigator
-      screenOptions={{
-        tabBarShowLabel: false,
-        tabBarStyle: styles.tabBar,
-        tabBarActiveTintColor: '#FFffff',
-        tabBarInactiveTintColor: '#666666',
-        headerShown: false,
-        
-      }}>
+      screenOptions={() => {
+
+        return {
+          tabBarShowLabel: false,
+          tabBarActiveTintColor: '#FFFFFF',
+          tabBarInactiveTintColor: '#666666',
+          headerShown: false,
+          tabBarStyle: {
+            position: 'absolute',
+            bottom: 10,
+            marginHorizontal: 55,
+            width: 'auto',
+            borderRadius: 25,
+            height: 65,
+            paddingTop: 15,
+            backgroundColor: '#1a1a1a',
+            borderTopWidth: 0,
+          },
+        };
+      }}
+    >
       <Tab.Screen
         name="DriverStack"
         component={DriverStack}
@@ -78,24 +92,24 @@ const BottomTabNav = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  tabBar: {
-    position: 'absolute',
-    bottom: 16,
-    marginHorizontal:55,
-    width: 'auto',
-    borderRadius: 25,
-    height: 65,
-    paddingTop: 15,
-    backgroundColor: '#1a1a1a',
-    borderTopWidth: 0,
-  },
-  IconStyle:{
-    borderBottomColor:'#ffffff',
-    borderBottomWidth : 2,
+// const styles = StyleSheet.create({
+//   tabBar: {
+//     position: 'absolute',
+//     bottom: 10,
+//     marginHorizontal:55,
+//     width: 'auto',
+//     borderRadius: 25,
+//     height: 65,
+//     paddingTop: 15,
+//     backgroundColor: '#1a1a1a',
+//     borderTopWidth: 0,
+//   },
+//   IconStyle:{
+//     borderBottomColor:'#ffffff',
+//     borderBottomWidth : 2,
 
-  }
+//   }
 
-});
+// });
 
 export default BottomTabNav;

@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Icon from '@react-native-vector-icons/material-icons';
 import Seperator from './Seperator';
@@ -8,6 +8,46 @@ type ConstructorProps = PropsWithChildren<{
 }>;
 
 const TeamItem = ({ team }: ConstructorProps) => {
+   const [color, setColor] = useState<string>('#e8002d');
+  
+    const teamName = team.Constructor.constructorId;
+  
+    useEffect(() => {
+      const teams: string[] = [
+        'mclaren',
+        'ferrari',
+        'red_bull',
+        'mercedes',
+        'aston_martin',
+        'alpine',
+        'haas',
+        'rb',
+        'williams',
+        'sauber',
+      ];
+      const colors: string[] = [
+        '#ff8000',
+        '#e8002d',
+        '#3671c6',
+        '#27f4d2',
+        '#229971',
+        '#ff87bc',
+        '#b6babd',
+        '#6692ff',
+        '#64c4ff',
+        '#52e252',
+      ];
+      if (teamName) {
+        const teamIndex = teams.indexOf(teamName); 
+        // console.log(teamIndex);
+        // Find the index of the team
+        if (teamIndex !== -1) {
+          setColor(colors[teamIndex]); // Set color based on the matching index
+        } else {
+          setColor('#e8002d'); 
+        }
+      }
+    }, [teamName]);
   return (
     <View style={styles.teamItemContainer}>
       {/* Position */}
@@ -17,7 +57,7 @@ const TeamItem = ({ team }: ConstructorProps) => {
 
       {/* Team Info */}
       <View style={styles.teamInfo}>
-        <Text style={styles.teamName}>{team.Constructor.name}</Text>
+        <Text style={[styles.teamName,{color}]}>{team.Constructor.name}</Text>
         <Text style={styles.nationality}>{team.Constructor.nationality}</Text>
       </View>
 

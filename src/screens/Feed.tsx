@@ -41,6 +41,7 @@ const Feed: React.FC = () => {
               <style>
                 body{
                 background-color: #000000;
+                  padding-bottom:65,
                 }
               </style>
             </html>
@@ -61,8 +62,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
   loader: {
-    width: '100%',
-    height: '100%',
+    width: '75%',
+    height: '75%',
   },
 });
 

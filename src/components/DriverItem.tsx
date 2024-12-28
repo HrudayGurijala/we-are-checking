@@ -1,14 +1,52 @@
 import {StyleSheet, Text, View} from 'react-native';
 import Icon from '@react-native-vector-icons/material-icons';
-import React, { PropsWithChildren } from 'react';
-
+import React, {PropsWithChildren, useEffect, useState} from 'react';
 
 type DriverProps = PropsWithChildren<{
-    driver : DriverStanding
-}>
+  driver: DriverStanding;
+}>;
 
+const DriverItem = ({driver}: DriverProps) => {
+  const [color, setColor] = useState<string>('#e8002d');
 
-const DriverItem = ({ driver }:DriverProps) => {
+  const teamName = driver.Constructors[0].constructorId;
+
+  useEffect(() => {
+    const teams: string[] = [
+      'mclaren',
+      'ferrari',
+      'red_bull',
+      'mercedes',
+      'aston_martin',
+      'alpine',
+      'haas',
+      'rb',
+      'williams',
+      'sauber',
+    ];
+    const colors: string[] = [
+      '#ff8000',
+      '#e8002d',
+      '#3671c6',
+      '#27f4d2',
+      '#229971',
+      '#ff87bc',
+      '#b6babd',
+      '#6692ff',
+      '#64c4ff',
+      '#52e252',
+    ];
+    if (teamName) {
+      const teamIndex = teams.indexOf(teamName); 
+      // console.log(teamIndex);
+      // Find the index of the team
+      if (teamIndex !== -1) {
+        setColor(colors[teamIndex]); // Set color based on the matching index
+      } else {
+        setColor('#e8002d'); 
+      }
+    }
+  }, [teamName]);
   return (
     <View style={styles.driverItemContainer}>
       {/* Position Circle */}
@@ -21,7 +59,9 @@ const DriverItem = ({ driver }:DriverProps) => {
         <View style={styles.nameContainer}>
           <Text style={styles.givenName}>{driver.Driver.givenName}</Text>
           <Text style={styles.familyName}>{driver.Driver.familyName}</Text>
-          <Text style={styles.constructorName}>{driver.Constructors[0].name}</Text>
+          <Text style={[styles.constructorName, {color}]}>
+            {driver.Constructors[0].name}
+          </Text>
         </View>
       </View>
 
@@ -51,8 +91,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     borderBottomColor: '#666666',
     borderBottomWidth: 2,
-    borderRightWidth:2,
-    borderRightColor:'#666666',
+    borderRightWidth: 2,
+    borderRightColor: '#666666',
   },
   positionContainer: {
     width: 40,
@@ -76,17 +116,16 @@ const styles = StyleSheet.create({
   givenName: {
     color: '#999999',
     fontSize: 18,
-    fontFamily:'AfacadFLux-Medium',
-    fontWeight:700,
+    fontFamily: 'AfacadFLux-Medium',
+    fontWeight: 700,
   },
   familyName: {
     color: '#FFFFFF',
-    fontSize: 27,
+    fontSize: 25,
     fontWeight: 'bold',
-    fontFamily:'AfacadFLux-Medium',
+    fontFamily: 'AfacadFLux-Medium',
   },
   constructorName: {
-    color: '#FF0000',
     fontSize: 16,
     marginTop: 4,
     fontWeight: 400,
@@ -104,7 +143,7 @@ const styles = StyleSheet.create({
     color: '#999999',
     fontSize: 12,
     marginTop: 2,
-    fontWeight:700,
+    fontWeight: 700,
   },
   iconContainer: {
     padding: 4,

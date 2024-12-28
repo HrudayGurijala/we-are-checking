@@ -34,10 +34,10 @@ const Drivers = ({navigation}: DriverProps) => {
 
   if (loading) {
     return (
-      <View >
+      <View style={styles.loaderContainer}>
         <LottieView
           source={require('../assets/Animation - 1735015379125.json')}
-          style={{width: '100%', height: '100%', backgroundColor: '#000000'}}
+          style={styles.loader}
           autoPlay
           loop
         />
@@ -82,7 +82,7 @@ safeArea: {
 container: {
   flex: 1,
   padding: 16,
-  paddingBottom:0,
+  paddingBottom:65,
   backgroundColor: '#000000',
 },
 header: {
@@ -97,5 +97,15 @@ pressable: {
 },
 pressedItem: {
   opacity: 0.7,
+},
+loaderContainer: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#000',
+},
+loader: {
+  width: '75%',
+  height: '75%',
 },
 });

@@ -27,6 +27,11 @@ const DriverStack = () => {
         component={DetailsDriver}
         options={{
           headerShown:true,
+          headerTitle: '',
+          headerStyle: {
+            backgroundColor: '#000',
+          },
+          headerTintColor: '#fff', 
         }}
       />
     </Stack.Navigator>
