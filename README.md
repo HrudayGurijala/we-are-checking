@@ -67,25 +67,25 @@ Download the `app-release.apk` file and install it on your Android device.
 ## Screenshots
 
 ### Home Screen
-<img src="demo1.png" alt="Home Screen" width="500"/>
+<img src="demo1.jpg" alt="Home Screen" width="500"/>
 
 ### Twitter Feed
-<img src="demo2.png" alt="Twitter Feed" width="500"/>
+<img src="demo2.jpg" alt="Twitter Feed" width="500"/>
 
 ### Driver Standings
-<img src="demo3.png" alt="Driver Standings" width="500"/>
+<img src="demo3.jpg" alt="Driver Standings" width="500"/>
 
 ### Constructor Standings
-<img src="demo4.png" alt="Constructor Standings" width="500"/>
+<img src="demo4.jpg" alt="Constructor Standings" width="500"/>
 
 ### Driver Details
-<img src="demo5.png" alt="Driver Details" width="500"/>
+<img src="demo5.jpg" alt="Driver Details" width="500"/>
 
 ### Constructor Details
-<img src="demo6.png" alt="Constructor Details" width="500"/>
+<img src="demo6.jpg" alt="Constructor Details" width="500"/>
 
 ### Schedule
-<img src="demo7.png" alt="Schedule" width="500"/>
+<img src="demo7.jpg" alt="Schedule" width="500"/>
 
 ## Contributing
 
