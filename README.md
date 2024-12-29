@@ -1,79 +1,103 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Formula One Stats App
 
-# Getting Started
+A Formula One stats application built using React Native CLI and React Navigation. The app utilizes the Formula One API to provide standings, schedules, and the latest news for the current Formula One season.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Features
 
-## Step 1: Start the Metro Server
+- **Twitter Feed**: Stay updated with the latest Formula One news and tweets.
+- **Driver Standings**: View the standings of drivers in the current season.
+- **Constructor Standings**: Track the performance of constructors in the current season.
+- **Driver Details**: Access detailed information about drivers.
+- **Constructor Details**: Get insights into constructors and their stats.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Technologies Used
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- **React Native CLI**: Framework for building native mobile applications using React.
+- **React Navigation**: Library for managing navigation and screens.
+- **Formula One API**: API used for fetching Formula One data, including standings and schedules.
 
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+## Project Structure
+```
+FORMULA-ONE-STATS-APP
+│   ├── android/app/build/outputs/apk/release/app-release.apk   # Location of the release APK.
+│   ├── src/                                                   # Source code for the application.
+│   │   ├── components/                                       # Reusable UI components.
+│   │   ├── screens/                                          # Screens for various app views.
+│   │   ├── navigation/                                       # Navigation configurations.
+│   │   ├── services/                                         # API interaction logic.
+│   │   ├── styles/                                           # Styling files.
+│   │   └── utils/                                            # Utility functions.
 ```
 
-## Step 2: Start your Application
+## Installation
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/formula-one-stats-app
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd formula-one-stats-app
+   ```
+3. Install required dependencies:
+   ```bash
+   npm install
+   ```
 
-### For Android
+## Running the Application
 
-```bash
-# using npm
-npm run android
+Run the application on an Android emulator or a connected device:
+   ```bash
+   npx react-native run-android
+   ```
 
-# OR using Yarn
-yarn android
+For iOS, use the following command:
+   ```bash
+   npx react-native run-ios
+   ```
+
+## Downloading the APK
+
+To download the release APK, navigate to:
 ```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+android\app\build\outputs\apk\release\app-release.apk
 ```
+Download the `app-release.apk` file and install it on your Android device.
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## Screenshots
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### Home Screen
+<img src="demo1.png" alt="Home Screen" width="500"/>
 
-## Step 3: Modifying your App
+### Twitter Feed
+<img src="demo2.png" alt="Twitter Feed" width="500"/>
 
-Now that you have successfully run the app, let's modify it.
+### Driver Standings
+<img src="demo3.png" alt="Driver Standings" width="500"/>
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+### Constructor Standings
+<img src="demo4.png" alt="Constructor Standings" width="500"/>
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+### Driver Details
+<img src="demo5.png" alt="Driver Details" width="500"/>
 
-## Congratulations! :tada:
+### Constructor Details
+<img src="demo6.png" alt="Constructor Details" width="500"/>
 
-You've successfully run and modified your React Native App. :partying_face:
+### Schedule
+<img src="demo7.png" alt="Schedule" width="500"/>
 
-### Now what?
+## Contributing
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+Feel free to fork this repository and submit a pull request if you want to contribute to this project.
 
-# Troubleshooting
+## License
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+This project is licensed under the MIT License.
 
-# Learn More
+## Contact
 
-To learn more about React Native, take a look at the following resources:
+If you have any questions, feel free to reach out:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- **Email**: [gurijalahruday@gmail.com](mailto:gurijalahruday@gmail.com)
+
